@@ -9,7 +9,7 @@ namespace GradeBook.GradeBooks
     {
         public double TwentyPercent = 0;
         // public List<double> Grades;
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool isweighted) : base(name, isweighted)
         {
             Type = Enums.GradeBookType.Ranked;
         }

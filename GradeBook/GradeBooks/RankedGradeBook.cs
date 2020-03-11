@@ -27,18 +27,22 @@ namespace GradeBook.GradeBooks
 
             if (count < threshold)
             {
+                count += 1;
                 return 'A';
             }
             else if (count < (threshold * 2))
             {
+                count += 1;
                 return 'B';
             }
             else if (count < (threshold * 3))
             {
+                count += 1;
                 return 'C';
             }
             else if (count < (threshold * 4))
             {
+                count += 1;
                 return 'D';
             }
             return 'F';

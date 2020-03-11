@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GradeBook.GradeBooks
@@ -16,32 +17,32 @@ namespace GradeBook.GradeBooks
         public override char GetLetterGrade(double averageGrade)
         {
             // Return char letter grade
-            if (Students.Count <= 5)
+            if (Students.Count < 5)
             {
-                throw InvalidOperationException("Ranked-grading requires a minimum of 5 students to work.");
+                throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work.");
             }
-            // TwentyPercent = (Students.Count * .2);
-            
+            int threshold = (int)Math.Ceiling(Students.Count * 0.2);
+            var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
+            var count = 0;
+
+            if (count < threshold)
+            {
+                return 'A';
+            }
+            else if (count < (threshold * 2))
+            {
+                return 'B';
+            }
+            else if (count < (threshold * 3))
+            {
+                return 'C';
+            }
+            else if (count < (threshold * 4))
+            {
+                return 'D';
+            }
             return 'F';
-            
-            //else if (true)
-            //{
-            //    return 'B';
-            //}
-            //else if (true)
-            //{
-            //    return 'C';
-            //}
-            //else if (true)
-            //{
-            //    return 'D';
-            //}
-            //return 'F';
         }
 
-        private Exception InvalidOperationException(string v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

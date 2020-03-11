@@ -25,24 +25,20 @@ namespace GradeBook.GradeBooks
             var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
             var count = 0;
 
-            if (count < threshold)
+            if (grades[threshold-1] < averageGrade)
             {
-                count += 1;
                 return 'A';
             }
-            else if (count < (threshold * 2))
+            else if (grades[(threshold*2) - 1] < averageGrade)
             {
-                count += 1;
                 return 'B';
             }
-            else if (count < (threshold * 3))
+            else if (grades[(threshold*3) - 1] < averageGrade)
             {
-                count += 1;
                 return 'C';
             }
-            else if (count < (threshold * 4))
+            else if (grades[(threshold*4)-1] < averageGrade)
             {
-                count += 1;
                 return 'D';
             }
             return 'F';
